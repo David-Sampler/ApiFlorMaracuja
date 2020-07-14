@@ -1,7 +1,6 @@
 const mongoose = require('../connectionDB/conexao')
 const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
-const { type } = require('os')
 const Usuario = new mongoose.Schema(
 {
  
