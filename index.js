@@ -1,4 +1,6 @@
-require('dotenv').config()
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const restify  = require("restify")
 const app = restify.createServer({version:1.0,name:"flor"})
