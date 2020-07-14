@@ -2,13 +2,16 @@
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-try {
-    mongoose.connect('mongodb+srv://sampler:12345@cluster0-lqjhc.mongodb.net/flor?retryWrites=true&w=majority',
-{useUnifiedTopology:true,useNewUrlParser:true,useFindAndModify:false,useCreateIndex:true});
+
+mongoose.connect('mongodb+srv://sampler:12345@cluster0-lqjhc.mongodb.net/flor?retryWrites=true&w=majority',
+    { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
 console.log("banco conectado")
 
-} catch (error) {
-    console.log(error)
-}
+mongoose.connection.once('open', function () {
+    console.log('Conectado com sucesso');
+}).on('error', function (error) {
+    console.log('Error is: ', error);
+});
+
 
 module.exports = mongoose
