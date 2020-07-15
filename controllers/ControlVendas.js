@@ -6,7 +6,7 @@ module.exports = {
 
         try {
             let vendas = await modelVendas.find({})
-            res.json({msg:vendas})
+            res.json(vendas)
             console.log(vendas)
             
         } catch (error) {
