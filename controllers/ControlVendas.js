@@ -4,8 +4,15 @@ module.exports = {
 
     allVendas: async (req, res) => {
 
-        let vendas = await modelVendas.find()
-        console.log(vendas)
+        try {
+            let vendas = await modelVendas.find({})
+            res.json({msg:vendas})
+            console.log(vendas)
+            
+        } catch (error) {
+           console.log(error)   
+        }
+       
     },
 
     inserirVenda: async (req, res) => {
