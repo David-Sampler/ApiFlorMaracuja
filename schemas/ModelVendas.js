@@ -1,5 +1,6 @@
 const mongo = require('../connectionDB/conexao')
 const vendas = new mongo.Schema(
+    
     {
         usuario: {
             type: String,
@@ -7,8 +8,7 @@ const vendas = new mongo.Schema(
         },
 
         cliente: {
-           nome:String,
-           
+           nome:String,           
            endereco:{
                rua:String,
                numero:String,

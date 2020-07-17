@@ -1,4 +1,5 @@
 const modelVendas = require("../schemas/ModelVendas")
+const { model } = require("../schemas/ModelVendas")
 
 module.exports = {
 
@@ -8,26 +9,26 @@ module.exports = {
             let vendas = await modelVendas.find({})
             res.json(vendas)
             console.log(vendas)
-            
+
         } catch (error) {
-           console.log(error)   
+            console.log(error)
         }
-       
+
     },
 
     inserirVenda: async (req, res) => {
         try {
-            let venda = req.body 
+            let venda = req.body
             console.log(venda)
-            
+
             await new modelVendas({
-                usuario:req.body.usuario,
-                cliente:req.body.cliente,
-                servico:req.body.servico,
-                totalVenda:req.body.totalVenda,
-                pagamento:req.body.pagamento
+                usuario: req.body.usuario,
+                cliente: req.body.cliente,
+                servico: req.body.servico,
+                totalVenda: req.body.totalVenda,
+                pagamento: req.body.pagamento
             }).save()
-            
+
             console.log("Venda com sucess")
 
         } catch (error) {
@@ -62,6 +63,20 @@ module.exports = {
 
 
         res.json({ msg: "Update Realizado com sucesso" })
+    },
+
+    OneVendas: async (req, res) => {
+        const id = req.params.id
+        console.log(id)
+        try {
+            let venda = await modelVendas.findOne({ _id: id })
+            res.json(venda)
+            console.log(venda)
+
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
 }
