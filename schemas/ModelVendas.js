@@ -1,46 +1,51 @@
 const mongo = require('../connectionDB/conexao')
 const vendas = new mongo.Schema(
-    
+
     {
         usuario: {
             type: String,
-            required:true
+            required: true
         },
 
         cliente: {
-           nome:String,           
-           endereco:{
-               rua:String,
-               numero:String,
-               complemento:String
-           },
+            nome: String,
+            endereco: {
+                rua: String,
+                numero: String,
+                complemento: String
+            },
 
-           telefone:String,
-           email:String,
-           
+            telefone: String,
+            email: String,
+
         },
 
         servico: [{
             tipo: String,
             valor: Number,
-            
+
         }],
 
-        totalVenda:{
-            type:Number
+        totalVenda: {
+            type: Number
         },
 
-        pagamento:{
-            type:String
-         },
- 
-        criado:{
-            type:Date,
-            default:Date.now()
+        pagamento: {
+            type: String
+        },
+
+        momento: [{
+            date: String,
+            hora: String
+        }],
+
+        criado: {
+            type: Date,
+            default: Date.now()
         }
 
-       
-      
+
+
 
     }
 )
