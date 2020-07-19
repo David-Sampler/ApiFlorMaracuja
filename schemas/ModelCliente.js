@@ -6,17 +6,20 @@ const cliente = mongo.model('cliente',
             type: String,
             uppercase: true
         },
-        
+
         endereco: {
-            rua:String,
-            numero:String,
-            complemento:String,
-            
-        },    
-            
+            rua: String,
+            numero: String,
+            complemento: String,
+
+        },
+
         telefone: String,
-        
-               
+
+        niver: Date,
+
+
+
         email: {
             type: String,
             unique: true,

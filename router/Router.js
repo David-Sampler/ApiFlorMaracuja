@@ -2,6 +2,7 @@ const cliente = require('../controllers/ControlCliente')
 const usuario = require('../controllers/ControlUsuario')
 const servicos = require('../controllers/ControlServico')
 const vendas = require('../controllers/ControlVendas')
+const anotacoes = require('../controllers/ControlAnotacoes')
 const middle = require('../midlewares/midleClientes')
 
 module.exports = (app) => {
@@ -32,4 +33,6 @@ module.exports = (app) => {
     app.get('/filtrovenda/:id', vendas.OneVendas)
 
 
+    app.get('/allanotacao', anotacoes.allnotações)
+    app.post('/insertAnotacao', anotacoes.insertAnotacao)
 } 
