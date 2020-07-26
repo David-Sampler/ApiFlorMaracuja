@@ -34,10 +34,10 @@ const vendas = new mongo.Schema(
             type: String
         },
 
-        momento: [{
+        momento: {
             date: String,
             hora: String
-        }],
+        },
 
         criado: {
             type: Date,

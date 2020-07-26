@@ -27,6 +27,7 @@ module.exports = {
                 servico: req.body.servico,
                 totalVenda: req.body.totalVenda,
                 pagamento: req.body.pagamento
+
             }).save()
 
             console.log("Venda com sucess")
