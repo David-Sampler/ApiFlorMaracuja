@@ -35,4 +35,5 @@ module.exports = (app) => {
 
     app.get('/allanotacao', anotacoes.allnotações)
     app.post('/insertAnotacao', anotacoes.insertAnotacao)
+    app.del('/deleteAnotacao/:id', anotacoes.apagarAnotacao)
 } 

@@ -14,5 +14,12 @@ module.exports = {
         res.json(msg)
         console.log("Mensagem crianda com sucesso")
 
+    },
+
+    apagarAnotacao: async (req, res) => {
+        const id = req.params._id
+        await anotacao.deleteOne(id)
+        console.log("Anotação deletada")
+        res.json("Excluido com sucesso")
     }
 }
