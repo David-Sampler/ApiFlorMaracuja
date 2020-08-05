@@ -9,12 +9,11 @@ const vendas = new mongo.Schema(
 
         cliente: {
             nome: String,
-            endereco: {
-                rua: String,
-                numero: String,
-                complemento: String
-            },
-
+            /* endereco: {
+                 rua: String,
+                 numero: String,
+                 complemento: String
+             },*/
             telefone: String,
             email: String,
 
@@ -39,11 +38,7 @@ const vendas = new mongo.Schema(
             hora: String
         },
 
-        criado: {
-            type: Date,
-            default: Date.now()
-        }
-
+        criado: Date,
 
 
 

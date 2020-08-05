@@ -17,6 +17,7 @@ module.exports = {
     },
 
     inserirVenda: async (req, res) => {
+
         try {
             let venda = req.body
             console.log(venda)
@@ -26,7 +27,9 @@ module.exports = {
                 cliente: req.body.cliente,
                 servico: req.body.servico,
                 totalVenda: req.body.totalVenda,
-                pagamento: req.body.pagamento
+                pagamento: req.body.pagamento,
+                momento: req.body.momento,
+                criado: new Date()
 
             }).save()
 
