@@ -11,14 +11,10 @@ const cliente = mongo.model('cliente',
             rua: String,
             numero: String,
             complemento: String,
-
         },
 
         telefone: String,
-
-        niver: Date,
-
-
+        niver: String,
 
         email: {
             type: String,

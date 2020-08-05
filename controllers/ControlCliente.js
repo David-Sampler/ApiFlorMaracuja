@@ -13,25 +13,26 @@ module.exports = {
 
     },
 
-    Onecliente: async (req,res) =>{
-        const id = req.params.id        
-        let cli = await cliente.findOne({_id:id})
+    Onecliente: async (req, res) => {
+        const id = req.params.id
+        let cli = await cliente.findOne({ _id: id })
         console.log(cli)
         return res.json(cli)
 
     },
-   
+
     //inserir cliente
     inserirCliente: async (req, res) => {
-        const { nome, endereco, telefone, email } = req.body
+        const { nome, endereco, telefone, email, niver } = req.body
         console.log(req.body)
-        
+
         try {
             let cli = await new cliente({
-                nome: nome,
-                endereco: endereco,
-                telefone: telefone,
-                email: email,
+                nome,
+                endereco,
+                telefone,
+                email,
+                niver,
                 criado: new Date().toISOString()
             })
 
@@ -57,19 +58,19 @@ module.exports = {
     updatecliente: async (req, res) => {
 
         const { nome, endereco, telefone, email } = req.body
-        
+
         let filtro = await cliente.findOneAndUpdate({ _id: req.params.id },
             {
                 nome: nome,
-                endereco:endereco,
-                telefone:telefone,
-                email:email,
-                criado:new Date().toString()
+                endereco: endereco,
+                telefone: telefone,
+                email: email,
+                criado: new Date().toString()
             }
         )
 
         console.log("Atualizado com sucesso")
-        res.send({msg:filtro})
+        res.send({ msg: filtro })
 
 
 
