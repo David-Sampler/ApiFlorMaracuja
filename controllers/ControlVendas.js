@@ -22,7 +22,7 @@ module.exports = {
             let venda = req.body
             console.log(venda)
 
-            await new modelVendas({
+            let vendafirmada = await new modelVendas({
                 usuario: req.body.usuario,
                 cliente: req.body.cliente,
                 servico: req.body.servico,
@@ -31,14 +31,14 @@ module.exports = {
                 momento: req.body.momento,
                 criado: new Date()
 
-            }).save()
+            })
 
-            console.log("Venda com sucess")
+            vendafirmada.save()
 
         } catch (error) {
             console.log(error)
         }
-        res.json({ msg: "Vendas Cadastrada com sucesso" })
+        res.json({ msg: "Vendas Cadastrada com sucesso", vendafirmada })
     },
 
     excluirVenda: async (req, res) => {
