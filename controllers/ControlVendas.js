@@ -34,11 +34,12 @@ module.exports = {
             })
 
             vendafirmada.save()
+            res.json(vendafirmada)
 
         } catch (error) {
             console.log(error)
         }
-        res.json({ msg: "Vendas Cadastrada com sucesso", vendafirmada })
+
     },
 
     excluirVenda: async (req, res) => {
