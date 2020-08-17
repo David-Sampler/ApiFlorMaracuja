@@ -31,9 +31,12 @@ module.exports = (app) => {
     app.del('/deletevendas/:id', vendas.excluirVenda)
     app.put('/atualizarvendas/:id', vendas.updateVendas)
     app.get('/filtrovenda/:id', vendas.OneVendas)
+    app.post('/filtro', vendas.filtroUsuario)
 
 
     app.get('/allanotacao', anotacoes.allnotações)
     app.post('/insertAnotacao', anotacoes.insertAnotacao)
     app.del('/deleteAnotacao/:id', anotacoes.apagarAnotacao)
+
+
 } 

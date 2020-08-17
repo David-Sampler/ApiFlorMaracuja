@@ -1,10 +1,9 @@
 const modelVendas = require("../schemas/ModelVendas")
-const { model } = require("../schemas/ModelVendas")
+const enviarEmail = require('../setup/email')
 
 module.exports = {
 
     allVendas: async (req, res) => {
-
         try {
             let vendas = await modelVendas.find({})
             res.json(vendas)
@@ -13,10 +12,12 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
-
     },
 
     inserirVenda: async (req, res) => {
+
+        vendas = [
+        ]
 
         try {
             let venda = req.body
@@ -30,11 +31,18 @@ module.exports = {
                 pagamento: req.body.pagamento,
                 momento: req.body.momento,
                 criado: new Date()
-
             })
 
             vendafirmada.save()
+
+            vendafirmada.servico.forEach(element => {
+                vendas.push(element.tipo)
+            });
+
+            console.log(vendas)
+
             res.json(vendafirmada)
+            //enviarEmail(vendas, vendafirmada.totalVenda, vendafirmada.cliente.email)
 
         } catch (error) {
             console.log(error)
@@ -82,6 +90,34 @@ module.exports = {
             console.log(error)
         }
 
+    },
+
+    filtroUsuario: async (req, res) => {
+
+        let total = 0
+
+        const { cliente, usuario, valor1, valor2 } = req.body
+        console.log(cliente)
+        let detalhe = await modelVendas.find({
+            $or: [
+                { 'cliente.nome': cliente },
+
+            ]
+            /*'cliente.nome': {
+                $in: [
+                    cliente
+                ]
+            }*/
+
+        }, { 'cliente.nome': 1 })
+
+        detalhe.forEach((res) => {
+            total += res.totalVenda
+            console.log(total)
+            return total
+        })
+        console.log(detalhe.length)
+        res.json(detalhe)
     }
 
 }
