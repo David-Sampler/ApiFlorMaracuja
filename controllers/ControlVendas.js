@@ -16,8 +16,6 @@ module.exports = {
 
     inserirVenda: async (req, res) => {
 
-        vendas = [
-        ]
 
         try {
             let venda = req.body

@@ -17,6 +17,7 @@ module.exports = (app) => {
     app.get('/allUser', usuario.allUsuario)
     app.post('/insertUser', usuario.insertUsuario)
     app.post('/login', usuario.loginUser)
+    app.get('/logarUsuario', usuario.logadoUsuario)
     //app.get('/autenticado',usuario.VerifyAutentic)
     app.del('/deleteUser/:id', usuario.deletarUsuario)
     app.put("/updateUser/:id", usuario.atualizarUsuario)

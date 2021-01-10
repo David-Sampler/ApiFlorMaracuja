@@ -2,41 +2,43 @@ const mongoose = require('../connectionDB/conexao')
 const bcrypt = require('bcryptjs')
 const crypto = require('crypto')
 const Usuario = new mongoose.Schema(
-{
- 
-    nome:{
-        type:String,
-        require:true,
-        uppercase: true
-    },
-     
-    password:{
-        type:String,
-        required:true,        
-        select:false,
-        set: (value) => crypto.createHash('md5').update(value).digest('hex')
-      
-    },
-    email:{
-        type:String,
-        unique:true,
-        lowercase:true
-    },
+    {
 
-    perfil:{
-        nome:String,
-        permissao:[]
-    }      
-    ,
+        nome: {
+            type: String,
+            require: true,
+            uppercase: true
+        },
 
-    criado:{
-        type:Date,
-        default:Date.now
-    }
- 
-    
+        password: {
+            type: String,
+            required: true,
+            select: false,
+            set: (value) => crypto.createHash('md5').update(value).digest('hex')
 
-})
+        },
+        email: {
+            type: String,
+            unique: true,
+            lowercase: true
+        },
+
+        perfil: [{
+            icon: String,
+            link: String
+        }]
+
+
+        ,
+
+        criado: {
+            type: Date,
+            default: Date.now
+        }
+
+
+
+    })
 
 /*Usuario.pre('save', async function (next){
     
@@ -52,6 +54,6 @@ const Usuario = new mongoose.Schema(
 })*/
 
 
-const user = mongoose.model("Usuario",Usuario)
+const user = mongoose.model("Usuario", Usuario)
 
 module.exports = user

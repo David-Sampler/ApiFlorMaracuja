@@ -2,6 +2,7 @@ const mongo = require('../connectionDB/conexao')
 
 const cliente = mongo.model('cliente',
     {
+        // @ts-ignore
         nome: {
             type: String,
             uppercase: true

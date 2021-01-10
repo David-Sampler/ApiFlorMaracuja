@@ -1,6 +1,5 @@
 const Usuario = require('../schemas/ModelUsuario')
 const jwt = require('../setup/jwt')
-const { verify } = require('jsonwebtoken')
 
 module.exports = {
 
@@ -9,6 +8,24 @@ module.exports = {
 
         let user = await Usuario.find()
         res.send(user)
+    },
+
+    logadoUsuario: async (req, res) => {
+
+        const [, token] = req.headers.authorization.split(' ')
+        try {
+            let payload = await jwt.decode(token)
+            console.log(payload)
+            // @ts-ignore
+
+            let usuarios = await Usuario.findById(payload.user)
+            return res.json(usuarios)
+
+        } catch (error) {
+            console.log(error)
+        }
+
+
     },
 
     insertUsuario: async (req, res) => {
@@ -36,22 +53,20 @@ module.exports = {
     },
 
     loginUser: async (req, res) => {
-
-      
-        const { email, password } = req.body
-        console.log(email, password)
-        dado = false
+        const { nome, password } = req.body
+        console.log(nome, password)
+        //let dado = false
         try {
-          
-            const user = await Usuario.findOne({ email, password })
-          
-            if(user){
+
+            const user = await Usuario.findOne({ nome, password })
+
+            if (user) {
                 const token = jwt.sign({ user: user.id })
-                return res.send({ user, token })
-            }else{
-                return res.json(dado)
+                return res.json({ user, token })
+            } else {
+                //return res.json(dado)
             }
-            
+
 
         } catch (error) {
             console.log(error)

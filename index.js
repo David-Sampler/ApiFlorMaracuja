@@ -7,10 +7,7 @@ const rotas = require('./router/Router')
 
 const cors = require('cors')
 
-/*options = {
-    origin:"*",
-    OptionsSucess:200
-}*/
+//options = { origin:"*", OptionsSucess:200}
 
 //SERVER HEADERS
 app.use((req, res, next) => { //Cria um middleware onde todas as requests passam por ele 
