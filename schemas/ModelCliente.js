@@ -1,28 +1,24 @@
 const mongo = require('../connectionDB/conexao')
 
-const cliente = mongo.model('cliente',
+const cli = new mongo.Schema(
     {
-        // @ts-ignore
+       
         nome: {
             type: String,
             uppercase: true
-        },
+        },     
 
-        endereco: {
-            rua: String,
-            numero: String,
-            complemento: String,
-        },
+        contato: Array,
 
-        telefone: String,
-        niver: String,
-
-        email: {
-            type: String,
-            unique: true,
-            lowercase: true
-        },
-        criado: Date
+        nascimento: String,
+       
+        criado: {
+            type:Date,
+            default:Date.now()
+        }
     })
+
+
+const cliente = mongo.model("cliente",cli)
 
 module.exports = cliente

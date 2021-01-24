@@ -28,16 +28,16 @@ module.exports = {
                 totalVenda: req.body.totalVenda,
                 pagamento: req.body.pagamento,
                 momento: req.body.momento,
-                criado: new Date()
+             
             })
 
             vendafirmada.save()
+            
+            //vendafirmada.servico.forEach(element => {
+             //   vendas.push(element.tipo)
+            //});
 
-            vendafirmada.servico.forEach(element => {
-                vendas.push(element.tipo)
-            });
-
-            console.log(vendas)
+            console.log(venda)
 
             res.json(vendafirmada)
             //enviarEmail(vendas, vendafirmada.totalVenda, vendafirmada.cliente.email)

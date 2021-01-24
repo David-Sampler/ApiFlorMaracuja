@@ -16,7 +16,7 @@ module.exports = {
         try {
             let payload = await jwt.decode(token)
             console.log(payload)
-            // @ts-ignore
+            
 
             let usuarios = await Usuario.findById(payload.user)
             return res.json(usuarios)
@@ -29,10 +29,10 @@ module.exports = {
     },
 
     insertUsuario: async (req, res) => {
-        const { email } = req.body
+        const { nome } = req.body
 
         try {
-            if (await Usuario.findOne({ email }))
+            if (await Usuario.findOne({ nome }))
                 return res.send({ msg: "Usuario já existe" })
 
             let user = await Usuario.create(req.body)
@@ -64,7 +64,7 @@ module.exports = {
                 const token = jwt.sign({ user: user.id })
                 return res.json({ user, token })
             } else {
-                //return res.json(dado)
+                return res.json("erro")
             }
 
 

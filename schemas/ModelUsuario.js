@@ -17,17 +17,13 @@ const Usuario = new mongoose.Schema(
             set: (value) => crypto.createHash('md5').update(value).digest('hex')
 
         },
-        email: {
-            type: String,
-            unique: true,
-            lowercase: true
-        },
+        
+        perfil:String,
 
-        perfil: [{
+        permissoes: [{
             icon: String,
             link: String
         }]
-
 
         ,
 

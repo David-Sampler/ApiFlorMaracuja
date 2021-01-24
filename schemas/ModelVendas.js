@@ -8,22 +8,12 @@ const vendas = new mongo.Schema(
         },
 
         cliente: {
-            nome: String,
-            /* endereco: {
-                 rua: String,
-                 numero: String,
-                 complemento: String
-             },*/
+            nome: String,           
             telefone: String,
             email: String,
-
         },
 
-        servico: [{
-            tipo: String,
-            valor: Number,
-
-        }],
+        servico: Array,
 
         totalVenda: {
             type: Number
@@ -38,7 +28,10 @@ const vendas = new mongo.Schema(
             hora: String
         },
 
-        criado: Date,
+        criado: {
+            type:Date,
+            default:Date.now
+        }
 
 
 
@@ -46,4 +39,5 @@ const vendas = new mongo.Schema(
 )
 
 const venda = mongo.model("venda", vendas)
+
 module.exports = venda

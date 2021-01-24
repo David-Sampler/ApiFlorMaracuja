@@ -23,24 +23,24 @@ module.exports = {
 
     //inserir cliente
     inserirCliente: async (req, res) => {
-        const { nome, endereco, telefone, email, niver } = req.body
-        console.log(req.body)
+        const {nome,contato,nascimento} = req.body
 
-        try {
-            let cli = await new cliente({
-                nome,
-                endereco,
-                telefone,
-                email,
-                niver,
-                criado: new Date().toISOString()
-            })
-
-            cli.save()
-            res.send({ msg: "Cadastrado com sucesso" })
-        } catch (error) {
-            console.log(error)
-        }
+        let Nome = await cliente.findOne({nome})
+        if(!Nome){
+            try {
+                let cli = await cliente.create({
+                    nome,contato,nascimento
+                })       
+                res.send({ msg: "Cadastrado com sucesso" })
+            } catch (error) {
+                console.log(error)
+            }
+        } else{
+            res.json("Atenção! nome já existe")
+           console.log("Nome já existe")
+        }     
+        
+       
     },
 
     excluircliente: async (req, res) => {
