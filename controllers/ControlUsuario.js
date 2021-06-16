@@ -15,8 +15,7 @@ module.exports = {
         const [, token] = req.headers.authorization.split(' ')
         try {
             let payload = await jwt.decode(token)
-            console.log(payload)
-            
+            console.log(payload)           
 
             let usuarios = await Usuario.findById(payload.user)
             return res.json(usuarios)

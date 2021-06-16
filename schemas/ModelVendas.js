@@ -4,7 +4,7 @@ const vendas = new mongo.Schema(
     {
         usuario: {
             type: String,
-            required: true
+            
         },
 
         cliente: {

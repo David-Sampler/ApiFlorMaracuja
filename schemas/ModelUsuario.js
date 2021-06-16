@@ -21,8 +21,9 @@ const Usuario = new mongoose.Schema(
         perfil:String,
 
         permissoes: [{
-            icon: String,
-            link: String
+            nome:String,
+            rota:String,
+            icon:String
         }]
 
         ,

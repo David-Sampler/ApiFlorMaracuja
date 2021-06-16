@@ -4,6 +4,9 @@ const servicos = require('../controllers/ControlServico')
 const vendas = require('../controllers/ControlVendas')
 const anotacoes = require('../controllers/ControlAnotacoes')
 const middle = require('../midlewares/midleClientes')
+const bronze = require('../controllers/ControlBronze')
+
+const Combo = require('../controllers/ControlCombo')
 
 module.exports = (app) => {
 
@@ -38,6 +41,17 @@ module.exports = (app) => {
     app.get('/allanotacao', anotacoes.allnotações)
     app.post('/insertAnotacao', anotacoes.insertAnotacao)
     app.del('/deleteAnotacao/:id', anotacoes.apagarAnotacao)
+
+    app.get('/allbronze',bronze.allvendas)
+    app.post('/insertVendas',bronze.insertVenda)
+    app.post('/filtrobronze',bronze.filtrobronze)
+ 
+    app.get('/todosCombos',Combo.allCombo)
+    app.post('/insertcombo',Combo.insertCombo)
+    app.put('/atualizar/:id',Combo.atualizarCombo)
+    app.post('/filtroCombo',Combo.filterCombor)
+    app.put('/atualizavenda/:id',Combo.atualizarVenda)
+
 
 
 } 
